@@ -18,10 +18,10 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public String register(Model model, @Valid @ModelAttribute("formData")RegisterFormDto registerFormDto, BindingResult bindingResult) {
+    public String register(@Valid @ModelAttribute("formData")RegisterFormDto registerFormDto,
+                           BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("formData", registerFormDto);
-            return "redirect:/";
+            return "home";
         }
         return "success";
     }
